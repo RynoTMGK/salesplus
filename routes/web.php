@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LeadController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -13,7 +14,6 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -24,4 +24,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::get('/agent', function () {
+    return Inertia::render('Agent', ["page" => "Agent"]);
+});
+
+Route::get('/contact', function () {
+    return Inertia::render('Contact', ["page" => "Contact"]);
+});
+
+Route::resource('/lead', LeadController::class)
+    ->only(['index', 'store'])
+    ->middleware(['auth', 'verified']);
+
+
+require __DIR__ . '/auth.php';
