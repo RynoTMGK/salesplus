@@ -4,15 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Agent;
 use Illuminate\Http\Request;
+// use Illuminate\Http\Response; 
+use Inertia\Inertia;
+use Inertia\Response;
 
 class AgentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Response 
     {
-        //
+        // $table
+        foreach (Agent::all() as $table) {
+            echo $table->name;
+
+            return $table->name;
+        };
+        // echo $table;
+       
+        // echo 'Hello, World!';
+        // return response('Hello, World!');
     }
 
     /**

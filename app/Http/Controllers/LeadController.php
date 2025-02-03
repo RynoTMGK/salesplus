@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lead;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class LeadController extends Controller
 {
@@ -12,7 +14,7 @@ class LeadController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Lead', ["page" => "Lead"]);
     }
 
     /**
@@ -26,9 +28,20 @@ class LeadController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'id_number' => 'required|string|max:13',
+            'email' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:15',
+            'role' => 'required|string|max:15',
+        ]);
+
+        $request->user()->leads()->create($validated);
+
+        return redirect(route('lead.index'));
     }
 
     /**
