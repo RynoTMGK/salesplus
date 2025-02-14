@@ -1,4 +1,10 @@
-<script setup></script>
+<script setup>
+const {data} = defineProps(['data']);
+
+console.log("data: ", data);
+
+
+</script>
 <template>
     <section class="bg-gray-50 p-3 sm:p-5 h-screen">
         <div class="mx-auto px-4 lg:px-12">
@@ -118,14 +124,18 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-4 py-3">Id</th>
+                                <th scope="col" class="px-4 py-3">User Id</th>
                                 <th scope="col" class="px-4 py-3">First Name</th>
                                 <th scope="col" class="px-4 py-3">Last Name</th>
                                 <th scope="col" class="px-4 py-3">Id Number</th>
                                 <th scope="col" class="px-4 py-3">Email</th>
                                 <th scope="col" class="px-4 py-3">Phone Number</th>
-                                <th scope="col" class="px-4 py-3">Description</th>
+                                <th scope="col" class="px-4 py-3">Street Address</th>
+                                <th scope="col" class="px-4 py-3">City</th>
+                                <th scope="col" class="px-4 py-3">Postal Code</th>
+                                <th scope="col" class="px-4 py-3">Province</th>
+                                <th scope="col" class="px-4 py-3">Role</th>
                                 <th scope="col" class="px-4 py-3">Status</th>
-                                <th scope="col" class="px-4 py-3">Deleted</th>
                                 <th scope="col" class="px-4 py-3">Date Created</th>
                                 <th scope="col" class="px-4 py-3">Date Updated</th>
                                 <th scope="col" class="px-4 py-3">
@@ -134,19 +144,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="border-b dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">3k2u3-76s7a6-76vs6-s353s-44u4h9</th>
-                                <td class="px-4 py-3">Ryno</td>
-                                <td class="px-4 py-3">Fourie</td>
-                                <td class="px-4 py-3">6807276461086</td>
-                                <td class="px-4 py-3">ryno@email.com</td>
-                                <td class="px-4 py-3">071 234 5678</td>
-                                <td class="px-4 py-3">Contact was captured</td>
-                                <td class="px-4 py-3">active</td>
-                                <td class="px-4 py-3">0</td>
-                                <td class="px-4 py-3">2025-01-30</td>
-                                <td class="px-4 py-3">2025-01-30</td>
+                            <tr v-for="row in data" class="border-b dark:border-gray-700">
+                                <!-- <th scope="row"
+                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ row.id }}</th> -->
+                                    <td class="px-4 py-3">{{ row.id }}</td>
+                                    <td class="px-4 py-3">{{ row.user_id }}</td>
+                                    <td class="px-4 py-3">{{ row.first_name }}</td>
+                                    <td class="px-4 py-3">{{ row.last_name }}</td>
+                                    <td class="px-4 py-3">{{ row.id_number }}</td>
+                                    <td class="px-4 py-3">{{ row.email }}</td>
+                                    <td class="px-4 py-3">{{ row.phone_number }}</td>
+                                    <td class="px-4 py-3">{{ row.street_address }}</td>
+                                    <td class="px-4 py-3">{{ row.city }}</td>
+                                    <td class="px-4 py-3">{{ row.postal_code }}</td>
+                                    <td class="px-4 py-3">{{ row.province }}</td>
+                                    <td class="px-4 py-3">{{ row.role }}</td>
+                                    <td class="px-4 py-3">{{ row.status }}</td>
+                                    <td class="px-4 py-3">{{ row.created_at }}</td>
+                                    <td class="px-4 py-3">{{ row.updated_at }}</td>
                                 <td class="px-4 py-3 flex items-center justify-end">
                                     <button id="apple-imac-27-dropdown-button"
                                         data-dropdown-toggle="apple-imac-27-dropdown"
