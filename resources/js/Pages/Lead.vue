@@ -3,20 +3,18 @@ import { Head } from '@inertiajs/vue3';
 import SidePanel from './Shared/SidePanel.vue';
 import Table from './Shared/Table.vue';
 import CreateModal from './Shared/CreateModal.vue';
-import Form from './Shared/Form.vue';
 
-const props = defineProps(['page']);
+const props = defineProps(['page', 'auth', 'leads']);
 
 </script>
 <template>
-
     <Head title="Lead" />
     <div class="flex h-screen">
-        <SidePanel />
-        <div class="w-full">
-            <Form />
+        <SidePanel :role="props.auth.user.role" />
+        <div class="w-[80%]">
+            <CreateModal role="lead" />
             <h1 class="pl-16 pt-8 text-4xl font-bold">{{ page }}</h1>
-            <Table />
+            <Table :data="props.leads.original" />
         </div>
     </div>
 </template>
