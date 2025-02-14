@@ -14,7 +14,9 @@ class LeadController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Lead', ["page" => "Lead"]);
+        $leads = Lead::all();
+
+        return Inertia::render('Lead', ["page" => "Lead", 'leads' => response()->json($leads)]);
     }
 
     /**
@@ -37,6 +39,11 @@ class LeadController extends Controller
             'email' => 'required|string|max:255',
             'phone_number' => 'required|string|max:15',
             'role' => 'required|string|max:15',
+            'street_address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'postal_code' => 'required|string|max:255',
+            'province' => 'required|string|max:255',
+            'status' => 'required|string|max:255',
         ]);
 
         $request->user()->leads()->create($validated);
