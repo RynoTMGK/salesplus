@@ -6,26 +6,12 @@ import Form from './Form.vue';
 
 defineProps(['role']);
 
-const form = reactive({
-    first_name: null,
-    last_name: null,
-    id_number: null,
-    role: null,
-    email: null,
-    phone_number: null,
-});
-
-// const showModal = ({
-//     show: false
-// });
 const showModal = ref(false);
 
 const handleModal = (bool) => {
     return showModal.value = bool;
 }
-function submit() {
-    router.post('/users', form)
-}
+
 </script>
 <template>
 
@@ -61,7 +47,7 @@ function submit() {
                         <span class="sr-only">Close modal</span>
                     </button>
                 </div>
-                <Form role="{role}" />
+                <Form role="lead" />
             </div>
         </div>
     </div> 
