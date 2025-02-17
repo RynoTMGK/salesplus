@@ -8,6 +8,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
+
 </script>
 
 <template>
@@ -52,7 +53,7 @@ const showingNavigationDropdown = ref(false);
                                                 type="button"
                                                 class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
                                             >
-                                                {{ $page.props.auth.user.name }}
+                                            {{ ($page.props.auth.user.role)[0].toUpperCase() }}{{ ($page.props.auth.user.role).slice(1) }}: {{ $page.props.auth.user.name }}
 
                                                 <svg
                                                     class="-me-0.5 ms-2 h-4 w-4"
