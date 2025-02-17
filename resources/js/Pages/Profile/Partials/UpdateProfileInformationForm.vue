@@ -56,7 +56,7 @@ const form = useForm({
             </div>
 
             <div>
-                <InputLabel for="role" value="Role" />
+                <InputLabel for="role" value="Role (not editable)" />
 
                 <TextInput
                     id="role"
@@ -66,6 +66,7 @@ const form = useForm({
                     required
                     autofocus
                     autocomplete="role"
+                    :disabled="true"
                 />
 
                 <InputError class="mt-2" :message="form.errors.role" />
