@@ -14,6 +14,7 @@ const props = defineProps(['page', 'auth']);
     <div class="flex h-screen">
         <SidePanel :role="props.auth.user.role" />
         <div class="w-[80%]">
+            <CreateModal role="agent" />
             <h1 class="pl-16 pt-8 text-4xl font-bold">{{ props.page }}</h1>
             <Table />
         </div>

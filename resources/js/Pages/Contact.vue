@@ -3,6 +3,7 @@ import { Head } from '@inertiajs/vue3';
 import SidePanel from './Shared/SidePanel.vue';
 import Table from './Shared/Table.vue';
 import CreateModal from './Shared/CreateModal.vue';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
 const props = defineProps(['page', 'auth']);
 
@@ -10,12 +11,13 @@ const props = defineProps(['page', 'auth']);
 <template>
 
     <Head title="Contact" />
-    <div class="flex h-screen">
+    <div class="flex">
         <SidePanel :role="props.auth.user.role" />
-        <div class="w-[80%]">
-            <CreateModal role="contact" />
-            <h1 class="pl-16 pt-8 text-4xl font-bold">{{ page }}</h1>
-            <Table />
+        <div class="w-screen">
+            <AuthenticatedLayout>
+                <CreateModal role="contact" />
+                <Table :role="props.auth.user.role" />
+            </AuthenticatedLayout>
         </div>
     </div>
 </template>
