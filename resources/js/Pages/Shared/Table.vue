@@ -1,11 +1,12 @@
 <script setup>
-const {data} = defineProps(['data']);
+const {data, role} = defineProps(['data', 'role']);
 
 console.log("data: ", data);
+console.log("role: ", role);
 
 
 </script>
-<template>
+<template v-if="role !== 'agent'">
     <section class="bg-gray-50 p-3 sm:p-5 h-screen">
         <div class="mx-auto px-4 lg:px-12">
             <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
@@ -148,7 +149,7 @@ console.log("data: ", data);
                                 <!-- <th scope="row"
                                     class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ row.id }}</th> -->
                                     <td class="px-4 py-3">{{ row.id }}</td>
-                                    <td class="px-4 py-3">{{ row.user_id }}</td>
+                                    <td class="px-4 py-3">{{ row.user_id }}</td> 
                                     <td class="px-4 py-3">{{ row.first_name }}</td>
                                     <td class="px-4 py-3">{{ row.last_name }}</td>
                                     <td class="px-4 py-3">{{ row.id_number }}</td>
